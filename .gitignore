@@ -1,0 +1,75 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django specific
+*.log
+*.pot
+*.pyc
+*.pyo
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+
+# Ignore uploaded files in development
+/media
+/static
+
+# If you are using Django Compressor for static files
+CACHE/
+
+# Environment variables
+.env
+
+# Ignore virtual environments
+venv/
+env/
+ENV/
+
+# Ignore macOS system files
+.DS_Store
+
+# PyCharm project files
+.idea/
+
+# VSCode project files
+.vscode/
+
+# Ignore node_modules (if using frontend frameworks like React or Vue)
+node_modules/
+
+# Ignore npm debug log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore pipenv files
+Pipfile.lock
+
+# Ignore coverage reports
+htmlcov/
+.tox/
+.coverage
+coverage.xml
+*.cover
+
+# pytest cache
+.pytest_cache/
+
+# Ignore mypy type check reports
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Ignore migrations (optional, if not tracking them in the repo)
+*/migrations/*
+
+# Ignore build artifacts
+build/
+dist/
+*.egg-info/
+
+# Ignore JetBrains IDE directories
+.idea/

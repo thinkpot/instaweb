@@ -1,0 +1,666 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home | InstaWeb{% endblock %}
+
+{% block content %}
+
+<style>
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animate-fadeInUp {
+        opacity: 0;
+        animation: fadeInUp 1s ease forwards;
+    }
+
+    /* Delay classes to stagger the animations */
+    .delay-300 {
+        animation-delay: 0.3s;
+    }
+
+    .delay-500 {
+        animation-delay: 0.5s;
+    }
+
+    .delay-700 {
+        animation-delay: 0.7s;
+    }
+
+    @keyframes borderAnimation {
+        0% {
+            text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #ffffff;
+        }
+
+        50% {
+            text-shadow: 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #ffffff;
+        }
+
+        100% {
+            text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #ffffff;
+        }
+    }
+
+    .animate-border {
+        position: relative;
+        animation: borderAnimation 2s infinite;
+    }
+
+    @keyframes borderMove {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        100% {
+            background-position: 100% 50%;
+        }
+    }
+
+    .moving-border-button {
+        position: relative;
+        display: inline-block;
+        padding: 2px;
+        /* Space for the border */
+        border-radius: 8px;
+        /* Match the button's border radius */
+        background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ffff00, #ff00ff);
+        background-size: 300%;
+        animation: borderMove 4s linear infinite;
+    }
+
+    .moving-border-button a {
+        display: inline-block;
+        background-color: #4f46e5;
+        /* Button background color */
+        padding: 16px 32px;
+        /* Adjust to match your button size */
+        border-radius: 6px;
+        /* Button's inner radius */
+        color: #fff;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: transform 0.3s ease;
+    }
+
+    .moving-border-button a:hover {
+        transform: scale(1.05);
+        /* Hover effect */
+
+    }
+
+    .loader {
+        border-top-color: #3498db;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+
+<section class="relative bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 py-20 overflow-hidden text-white">
+    <div class="container mx-auto text-center px-12 relative z-10">
+        <!-- Gradient Background Layer -->
+        <div class="absolute inset-0 bg-cover bg-center opacity-20 transition-opacity duration-1000 ease-in-out"
+            style="background-image: url('your-image-url.jpg');"></div>
+
+        <!-- Hero Content -->
+        <div
+            class="relative flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-10">
+            <!-- Left: Hero Text -->
+            <div class="max-w-md text-center md:text-left md:flex-1">
+                <h1
+                    class="text-5xl sm:text-6xl font-extrabold text-white mb-4 leading-tight animate-fadeInUp delay-300">
+                    <span class="text-4xl sm:text-5xl text-accent-color">Welcome to</span><br>
+                    <!-- Animated Border for InstaWeb -->
+                    <span class="block text-6xl sm:text-7xl text-[#3b82f6]">InstaWeb</span><br>
+                    <span class="text-xl sm:text-2xl text-gray-300">Your All-in-One Web Solution</span>
+                </h1>
+                <p class="text-lg sm:text-xl text-gray-400 mb-8 animate-fadeInUp delay-500">
+                    Elevate your business with our custom web solutions and services tailored for growth.
+                </p>
+
+                <!-- Button -->
+                <div class="flex justify-center md:justify-start">
+                    <div class="moving-border-button modal-open-btn">
+                        <a href="#services" class="flex items-center space-x-2">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Get Started</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right: Image Mockup (Tablet and Phone) -->
+            <div class="flex items-center justify-center md:flex-1 relative animate-fadeInUp delay-700">
+                <div class="relative w-80 md:w-96 sm:mt-30 mt-20">
+                    <!-- Tablet Mockup (Behind the Phone) -->
+                    <img src="{% static 'images/laptop-mockup.png' %}" alt="Tablet Mockup"
+                        class="w-full transform rotate-0 md:-rotate-3 relative z-0">
+                    <!-- Phone Mockup (In Front of Tablet) -->
+                    <img src="{% static 'images/mobile-mockup.png' %}" alt="Phone Mockup"
+                        class="absolute top-1/2 left-1/2 w-36 sm:w-44 md:w-52 transform -translate-x-1/2 -translate-y-1/2 rotate-6 z-10">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Animated Background Circles for Modern Look -->
+    <div class="absolute top-0 left-0 w-32 h-32 bg-blue-600 rounded-full opacity-50 blur-xl animation-pulse"></div>
+    <div
+        class="absolute bottom-10 right-10 w-24 h-24 bg-indigo-700 rounded-full opacity-50 blur-lg animation-pulse-slow">
+    </div>
+</section>
+
+
+
+
+<section class="relative py-20 bg-gradient-to-r from-blue-50 via-white to-blue-50 overflow-hidden">
+    <!-- SVG Background Elements -->
+    <div class="absolute top-0 left-0 w-full h-full opacity-10"> <svg xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 320" class="absolute top-0 left-0 w-full">
+            <path fill="#3b82f6" fill-opacity="1" d="M0,224L1440,96L1440,320L0,320Z"></path>
+        </svg> </div>
+
+    <!-- Section Container -->
+    <div class="container mx-auto px-6 text-center relative z-10">
+        <!-- 3D Text with Shadow Effect -->
+        <h2
+            class="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-800 mb-8">
+            Solving Problems at Lightning Speed
+        </h2>
+        <p class="text-lg sm:text-xl text-gray-600 mb-10">Affordable solutions tailored to your business needs.</p>
+
+        <!-- 3 Key Problem-Solving Cards with Hover Effects -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+            <!-- Card 1: Problem Solving -->
+            <div
+                class="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                <div class="mb-4">
+                    <svg class="w-12 h-12 mx-auto text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-blue-600 mb-4">We Solve Your Problems</h3>
+                <p class="text-gray-500">
+                    Whatever your challenge, we have the tools and expertise to create custom solutions that suit
+                    your business goals.
+                </p>
+            </div>
+
+            <!-- Card 2: Affordable Pricing -->
+            <div
+                class="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                <div class="mb-4">
+                    <svg class="w-12 h-12 mx-auto text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8c-1.11 0-2 .89-2 2v2c0 1.11.89 2 2 2s2-.89 2-2v-2c0-1.11-.89-2-2-2zM3.1 13c-.12.33-.1.72-.1 1 0 2.21 1.79 4 4 4h.17l1.64 4.29c.05.14.11.25.19.35.21.23.52.36.85.36h5.5c.33 0 .64-.13.85-.36.08-.1.14-.21.19-.35L17.93 17H18c2.21 0 4-1.79 4-4 0-.28.02-.67-.1-1M7 10c-1.11 0-2 .89-2 2v2c0 1.11.89 2 2 2h2v-6H7z" />
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-blue-600 mb-4">Lowest Price Guaranteed</h3>
+                <p class="text-gray-500">
+                    Get cutting-edge web solutions that fit your budget. We make sure you get the best value for
+                    your money.
+                </p>
+            </div>
+
+            <!-- Card 3: Fast Delivery -->
+            <div
+                class="bg-white p-8 rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                <div class="mb-4">
+                    <svg class="w-12 h-12 mx-auto text-blue-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-blue-600 mb-4">Fastest Delivery</h3>
+                <p class="text-gray-500">
+                    We deliver high-quality results on time, every time. No more delays—get your website up and
+                    running faster than ever.
+                </p>
+            </div>
+        </div>
+
+        <!-- Call to Action Button with Hover Animation -->
+        <div class="flex justify-center md:justify-start m-auto mt-10" style="justify-content: center;">
+            <div class="moving-border-button modal-open-btn">
+                <a href="#services" class="flex items-center space-x-2">
+                    <i class="fas fa-arrow-right"></i>
+                    <span>Get Started</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Animated SVGs for a Creative Look -->
+    <div class="absolute -top-16 right-10">
+        <svg class="animate-spin-slow w-32 h-32 text-blue-300 opacity-20" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 4v1m6.364-1.364l-.707.707m2.121 2.121l-.707.707M20 12h-1M4 12H3m1.364 6.364l.707-.707m-2.121-2.121l.707-.707M12 20v-1m-6.364 1.364l.707-.707m-2.121-2.121l.707-.707M12 4a8 8 0 110 16 8 8 0 010-16z" />
+        </svg>
+    </div>
+</section>
+
+
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-6 text-center md:text-left">
+        <h2 class="text-5xl font-bold text-primary-text-color mb-12">
+            <span>Expert Solutions</span>
+            <br>
+            <span class="text-secondary-text-color text-lg">#EmpoweringCreators #TradingSolutions
+                #DigitalGrowth</span>
+        </h2>
+
+        <p class="text-secondary-text-color text-lg mb-12 md:w-1/2">Discover how our tailored solutions empower
+            content creators and brokers to thrive in their respective domains.</p>
+
+        <!-- Main Service Section -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <!-- Service Card Template (Repeated for each service) -->
+            <div class="service-card group bg-white rounded-2xl shadow-md transition duration-300 hover:shadow-lg">
+                <div class="card-header bg-accent-color text-primary-text-color p-6 rounded-t-2xl">
+                    <h3 class="text-3xl font-bold">Landing Pages</h3>
+                </div>
+                <div class="card-body p-6 pt-4">
+                    <p class="text-secondary-text-color text-lg mb-6">Crafted landing pages for various needs.</p>
+                    <button class="text-accent-color hover:underline" onclick="toggleDetails('launch')">Explore
+                        Details</button>
+                    <div id="launch" class="hidden mt-6 p-4 border-t border-light-gray">
+                        <ul class="text-secondary-text-color list-disc pl-6 space-y-2">
+                            <li>Course/Product Sales Pages</li>
+                            <li>Webinar Registration Pages</li>
+                            <li>Sales Funnel Pages</li>
+                            <li>Lead Capture Pages (Brokerage)</li>
+                            <li>Brokerage Offer Pages</li>
+                            <li>Referral Program Pages</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Platforms -->
+            <div class="service-card group bg-white rounded-2xl shadow-md transition duration-300 hover:shadow-lg">
+                <div class="card-header bg-accent-color text-primary-text-color p-6 rounded-t-2xl">
+                    <h3 class="text-3xl font-bold">Web Apps</h3>
+                </div>
+                <div class="card-body p-6 pt-4">
+                    <p class="text-secondary-text-color text-lg mb-6">Robust web apps for various needs.</p>
+                    <button class="text-accent-color hover:underline" onclick="toggleDetails('platforms')">Explore
+                        Details</button>
+                    <div id="platforms" class="hidden mt-6 p-4 border-t border-light-gray">
+                        <ul class="text-secondary-text-color list-disc pl-6 space-y-2">
+                            <li>Course Platforms</li>
+                            <li>Membership Websites</li>
+                            <li>E-commerce for Digital Products</li>
+                            <li>Trading Platforms</li>
+                            <li>Forex Brokerage Platforms</li>
+                            <li>Market Analysis Tools</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Boost Modules -->
+            <div class="service-card group bg-white rounded-2xl shadow-md transition duration-300 hover:shadow-lg">
+                <div class="card-header bg-accent-color text-primary-text-color p-6 rounded-t-2xl">
+                    <h3 class="text-3xl font-bold">Feature Integration</h3>
+                </div>
+                <div class="card-body p-6 pt-4">
+                    <p class="text-secondary-text-color text-lg mb-6">Enhance with feature integrations.</p>
+                    <button class="text-accent-color hover:underline" onclick="toggleDetails('boost')">Explore
+                        Details</button>
+                    <div id="boost" class="hidden mt-6 p-4 border-t border-light-gray">
+                        <ul class="text-secondary-text-color list-disc pl-6 space-y-2">
+                            <li>Payment Gateway Integration</li>
+                            <li>Marketing Automation</li>
+                            <li>Chatbot/Live Chat Integration</li>
+                            <li>Analytics & Reporting</li>
+                            <li>Email Marketing</li>
+                            <li>Push Notifications</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-gradient-to-r from-blue-50 via-blue-100 to-blue-50 py-20 mt-16 relative overflow-hidden">
+    <!-- SVG Background -->
+
+
+    <div class="container mx-auto text-center px-6 relative z-10">
+        <h2 class="text-3xl sm:text-4xl font-semibold text-primary-text-color mb-10">
+            What We've Built for Others
+        </h2>
+        <p class="text-lg sm:text-xl text-secondary-text-color mb-12">
+            A glimpse of the powerful websites and applications we’ve crafted to help businesses thrive.
+        </p>
+
+        <!-- Project Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+            <!-- Project 1 -->
+            <div class="relative bg-secondary-bg-color border border-border-color rounded-lg shadow-lg overflow-hidden">
+                <img src="{% static '/images/myfxpro.png' %}" alt="Project 1" class="w-full h-48 object-cover">
+                <div class="p-6 bg-white">
+                    <h3 class="text-2xl font-semibold mb-2 text-primary-text-color">MyFxPro</h3>
+                    <p class="text-lg text-secondary-text-color mb-4">A Demo forex Trading Platform</p>
+                    <a target="_blank" href="https://www.myfxpro.in"
+                        class="bg-indigo-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-all">Live
+                        Preview</a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="relative bg-secondary-bg-color border border-border-color rounded-lg shadow-lg overflow-hidden">
+                <img src="{% static '/images/tasvir.png' %}" alt="Project 2" class="w-full h-48 object-cover">
+                <div class="p-6 bg-white">
+                    <h3 class="text-2xl font-semibold mb-2 text-primary-text-color">Tasvir</h3>
+                    <p class="text-lg text-secondary-text-color mb-4">AI Headshot Generator</p>
+                    <a target="_blank" href="https://www.tasvir.tech"
+                        class="bg-indigo-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-all">Live
+                        Preview</a>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="relative bg-secondary-bg-color border border-border-color rounded-lg shadow-lg overflow-hidden">
+                <img src="{% static '/images/exprto.png' %}" alt="Project 3" class="w-full h-48 object-cover">
+                <div class="p-6 bg-white">
+                    <h3 class="text-2xl font-semibold mb-2 text-primary-text-color">Exprto</h3>
+                    <p class="text-lg text-secondary-text-color mb-4">India’s Largest Community of Mentors</p>
+                    <a target="_blank" href="https://www.exprto.com/"
+                        class="bg-indigo-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-all">Live
+                        Preview</a>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="relative bg-secondary-bg-color border border-border-color rounded-lg shadow-lg overflow-hidden">
+                <img src="{% static '/images/neural.png' %}" alt="Project 3" class="w-full h-48 object-cover">
+                <div class="p-6 bg-white">
+                    <h3 class="text-2xl font-semibold mb-2 text-primary-text-color">Neural Wave Technologies</h3>
+                    <p class="text-lg text-secondary-text-color mb-4">Investment Management Firm</p>
+                    <a target="_blank" href="https://neuralwavetechnologies.co.in/"
+                        class="bg-indigo-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-all">Live
+                        Preview</a>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="relative bg-secondary-bg-color border border-border-color rounded-lg shadow-lg overflow-hidden">
+                <img src="{% static '/images/whalestreet.png' %}" alt="Project 3" class="w-full h-48 object-cover">
+                <div class="p-6 bg-white">
+                    <h3 class="text-2xl font-semibold mb-2 text-primary-text-color">WhaleStreet</h3>
+                    <p class="text-lg text-secondary-text-color mb-4">Online Trading Course Platform</p>
+                    <a target="_blank" href="https://whalestreet.in/"
+                        class="bg-indigo-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-all">Live
+                        Preview</a>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="relative bg-secondary-bg-color border border-border-color rounded-lg shadow-lg overflow-hidden">
+                <img src="{% static '/images/webinar.png' %}" alt="Project 3" class="w-full h-48 object-cover">
+                <div class="p-6 bg-white">
+                    <h3 class="text-2xl font-semibold mb-2 text-primary-text-color">Online Webinar</h3>
+                    <p class="text-lg text-secondary-text-color mb-4">Landing Page for Online Webinar</p>
+                    <a target="_blank" href="https://workshop.compoundthemoney.com/option-trading-strategy-masterclass"
+                        class="bg-indigo-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-all">Live
+                        Preview</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-center md:justify-start m-auto mt-10" style="justify-content: center;">
+            <div class="moving-border-button modal-open-btn">
+                <a href="#services" class="flex items-center space-x-2">
+                    <i class="fas fa-arrow-right"></i>
+                    <span>Get Started</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal -->
+<div style="z-index: 100;" id="contact-modal"
+    class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4 md:pt-12 hidden">
+    <div class="bg-white w-full max-w-3xl rounded-lg shadow-lg p-8 relative" style="margin-top: 2rem;">
+        <span id="close-modal" class="absolute top-4 right-4 text-gray-500 cursor-pointer">&times;</span>
+        <h2 class="text-3xl font-semibold text-primary-text-color mb-6">Contact Us</h2>
+        <p class="text-lg text-secondary-text-color mb-6">Our team will contact you within 4-5 hours of submitting
+            the form.</p>
+
+        <div id="loading-spinner"
+            class="hidden absolute inset-0 flex justify-center items-center bg-white bg-opacity-75">
+            <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12"></div>
+        </div>
+
+        <!-- Form -->
+        <form class="space-y-6">
+            <!-- Full Name and Email (Responsive Grid) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Full Name -->
+                <div>
+                    <label for="full-name" class="block text-md font-medium text-gray-700">Full Name</label>
+                    <input id="full-name" type="text" placeholder="Enter your full name" required
+                        class="w-full px-4 py-3 rounded-lg border-2 border-cta-color focus:outline-none focus:ring-2 focus:ring-cta-hover transition text-lg">
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label for="email" class="block text-md font-medium text-gray-700">Email</label>
+                    <input id="email" type="email" placeholder="Enter your email address" required
+                        class="w-full px-4 py-3 rounded-lg border-2 border-cta-color focus:outline-none focus:ring-2 focus:ring-cta-hover transition text-lg">
+                </div>
+            </div>
+
+            <!-- Phone Number and Service Dropdown (Responsive Grid) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Phone Number -->
+                <div>
+                    <label for="phone" class="block text-md font-medium text-gray-700">Phone Number</label>
+                    <input id="phone" type="tel" placeholder="Enter your phone number" required
+                        class="w-full px-4 py-3 rounded-lg border-2 border-cta-color focus:outline-none focus:ring-2 focus:ring-cta-hover transition text-lg">
+                </div>
+
+                <!-- Service Dropdown -->
+                <div>
+                    <label for="service" class="block text-md font-medium text-gray-700">Service Interested
+                        In</label>
+                    <select id="service" required
+                        class="w-full px-4 py-3 rounded-lg border-2 border-cta-color focus:outline-none focus:ring-2 focus:ring-cta-hover transition text-lg">
+                        <option value="" disabled selected>Select a service</option>
+
+                        {% for service in services %}
+                        <option value="{{service.id}}">{{service.name}}</option>
+                        {% endfor %}
+
+                    </select>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit"
+                class="w-full bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold text-xl hover:bg-cta-hover transition-all">
+                Submit
+            </button>
+        </form>
+    </div>
+</div>
+
+
+<!-- JavaScript to Open/Close Modal -->
+<script>
+    // Function to open the modal
+    function openModal() {
+        const modal = document.getElementById('contact-modal');
+        modal.classList.remove('hidden');
+    }
+
+    // Close modal functionality
+    const closeModal = document.getElementById('close-modal');
+    closeModal.addEventListener('click', () => {
+        const modal = document.getElementById('contact-modal');
+        modal.classList.add('hidden');
+    });
+
+    // Hide modal if clicked outside the modal content area
+    window.addEventListener('click', (event) => {
+        const modal = document.getElementById('contact-modal');
+        if (event.target === modal) {
+            modal.classList.add('hidden');
+        }
+    });
+
+    // Add event listener to all "Get Started" buttons
+    const getStartedButtons = document.querySelectorAll('.modal-open-btn');
+    getStartedButtons.forEach((button) => {
+        button.addEventListener('click', openModal);
+    });
+
+
+</script>
+
+<script>
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navMenu = document.querySelector('.nav-menu');
+    const navItems = document.querySelectorAll('.nav-item');
+
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenuBtn.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
+    // For mobile: Toggle mega-menu on nav-item click
+    if (window.innerWidth <= 768) {
+        navItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                // Only for items with mega-menu
+                if (item.querySelector('.mega-menu')) {
+                    e.preventDefault();
+                    // Remove active class from all items
+                    navItems.forEach(i => {
+                        if (i !== item) i.classList.remove('active');
+                    });
+                    // Toggle active class for clicked item
+                    item.classList.toggle('active');
+                }
+            });
+        });
+    }
+</script>
+
+<script>
+    function toggleDetails(id) {
+        const element = document.getElementById(id);
+        if (element.classList.contains('hidden')) {
+            element.classList.remove('hidden');
+        } else {
+            element.classList.add('hidden');
+        }
+    }
+</script>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const contactForm = document.querySelector('form');
+        const contactModal = document.getElementById('contact-modal');
+        const closeModal = document.getElementById('close-modal');
+        const loadingSpinner = document.getElementById('loading-spinner');
+
+
+        // Form submission
+        contactForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const fullName = document.getElementById('full-name').value;
+            const email = document.getElementById('email').value;
+            const phoneNumber = document.getElementById('phone').value;
+            const serviceInterest = document.getElementById('service').value;
+            const csrfToken = getCSRFToken();
+
+            // Construct data object
+            const formData = {
+                full_name: fullName,
+                email: email,
+                phone_number: phoneNumber,
+                service_interest: parseInt(serviceInterest)
+            };
+
+            // Show the loading spinner
+            loadingSpinner.classList.remove('hidden');
+
+            try {
+                // Send POST request to the API
+                const response = await fetch('/api/leads/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrfToken,
+                    },
+                    body: JSON.stringify(formData),
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Form Submitted!',
+                        text: 'We will contact you soon!',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                    contactForm.reset();
+                    // Optionally, close modal after submission
+                    contactModal.classList.add('hidden');
+                } else {
+                    const errorData = await response.json();
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: errorData.detail || 'Something went wrong. Please try again.',
+                        showConfirmButton: true
+                    });
+                }
+            } catch (error) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong. Please try again later.',
+                    showConfirmButton: true
+                });
+            }
+            finally {
+                // Hide the loading spinner once submission is done
+                loadingSpinner.classList.add('hidden');
+            }
+        });
+    });
+</script>
+
+{% endblock %}

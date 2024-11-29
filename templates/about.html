@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home | InstaWeb{% endblock %}
+
+{% block content %}
+
+<style>
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .animate-fade-in {
+        animation: fade-in 1.5s ease-in-out forwards;
+    }
+
+    @keyframes scale {
+        0% {
+            transform: scale(0.9);
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .animate-scale {
+        animation: scale 1s ease-in-out forwards;
+    }
+</style>
+
+<section class="bg-gradient-to-r from-blue-50 to-gray-50 py-16 relative overflow-hidden mt-10">
+    <!-- Background Animation SVG -->
+    <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="absolute top-0 left-0 w-full">
+            <path fill="#3b82f6" d="M0,224L1440,96L1440,320L0,320Z"></path>
+        </svg>
+    </div>
+
+    <div class="container mx-auto px-6 md:px-12 relative z-10">
+        <!-- Header Section with Fade-in Animation -->
+        <div class="text-center mb-12 animate-fade-in">
+            <h1 class="text-5xl font-bold text-primary-text-color mb-4 tracking-wide">About InstaWeb</h1>
+            <p class="text-secondary-text-color text-lg max-w-2xl mx-auto">
+                At InstaWeb, we specialize in creating tailored websites and digital solutions for content creators,
+                businesses, and entrepreneurs. Fast delivery, affordable pricing, and exceptional quality.
+            </p>
+        </div>
+
+        <!-- Content Section with Hover and Animation Effects -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <!-- Image Section with Scale Animation -->
+            <div class="mb-8 md:mb-0 animate-scale">
+                <img src="{% static 'images/aboutimage.webp' %}" alt="InstaWeb"
+                    class="w-full rounded-lg shadow-lg transition-transform duration-500 hover:scale-105">
+            </div>
+
+            <!-- Text Section with Delayed Fade-in -->
+            <div class="animate-fade-in delay-500">
+                <h2 class="text-4xl font-bold text-primary-text-color mb-6">Who We Are</h2>
+                <p class="text-secondary-text-color mb-4 text-lg">
+                    Founded with a passion for technology and creativity, InstaWeb is dedicated to providing
+                    high-quality web development services. Whether you're launching an e-commerce platform or
+                    showcasing digital products, we ensure you stand out.
+                </p>
+                <p class="text-secondary-text-color mb-4 text-lg">
+                    Our team works tirelessly to deliver fast, custom solutions that cater to your needs. We
+                    understand the unique challenges of today’s digital landscape and are here to help you thrive.
+                </p>
+            </div>
+        </div>
+
+        <!-- Why Choose Us Section with Animation -->
+        <div class="mt-16 text-center">
+            <h2 class="text-3xl font-semibold text-primary-text-color mb-8 animate-fade-in">Why Choose InstaWeb?
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                <!-- Box 1 with Hover Animation -->
+                <div class="p-6 bg-white rounded-lg shadow-lg transition-transform duration-500 hover:scale-105">
+                    <div class="mb-4">
+                        <svg class="w-12 h-12 mx-auto text-cta-color" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary-text-color mb-4">Tailored Solutions</h3>
+                    <p class="text-secondary-text-color">
+                        Custom web solutions designed to meet the specific needs of your business and digital goals.
+                    </p>
+                </div>
+
+                <!-- Box 2 with Hover Animation -->
+                <div class="p-6 bg-white rounded-lg shadow-lg transition-transform duration-500 hover:scale-105">
+                    <div class="mb-4">
+                        <svg class="w-12 h-12 mx-auto text-cta-color" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6 1v-6a9 9 0 10-18 0v6m18 0v2a2 2 0 01-2 2h-4a2 2 0 01-2-2H8a2 2 0 01-2-2v-2m0-6h16">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary-text-color mb-4">Fast Delivery</h3>
+                    <p class="text-secondary-text-color">
+                        We ensure timely project delivery so you can meet deadlines without compromising on quality.
+                    </p>
+                </div>
+
+                <!-- Box 3 with Hover Animation -->
+                <div class="p-6 bg-white rounded-lg shadow-lg transition-transform duration-500 hover:scale-105">
+                    <div class="mb-4">
+                        <svg class="w-12 h-12 mx-auto text-cta-color" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20 21H4a2 2 0 01-2-2V5a2 2 0 012-2h16a2 2 0 012 2v14a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary-text-color mb-4">Affordable Pricing</h3>
+                    <p class="text-secondary-text-color">
+                        Competitive pricing without sacrificing quality, perfect for businesses of all sizes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section with Background and Fade-in Animation -->
+<section class="bg-gradient-to-r from-blue-100 to-gray-100 py-16">
+    <div class="container mx-auto px-6 md:px-12 text-center relative z-10">
+        <h2 class="text-4xl font-bold text-primary-text-color mb-12 animate-fade-in">Meet the Team</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <!-- Team Member 1 -->
+            <div class="text-center animate-scale">
+                <img src="{% static 'images/profile/shahid.webp' %}" alt="Team Member 1"
+                    class="w-48 h-48 mx-auto rounded-full mb-4 transition-transform duration-500 hover:scale-105">
+                <h3 class="text-xl font-semibold text-primary-text-color mb-2">Shahid Khan</h3>
+                <p class="text-secondary-text-color">Founder / Developer</p>
+            </div>
+
+            <!-- Team Member 2 -->
+            <div class="text-center animate-scale">
+                <img src="{% static 'images/profile/javed.jpeg' %}" alt="Team Member 2"
+                    class="w-48 h-48 mx-auto rounded-full mb-4 transition-transform duration-500 hover:scale-105">
+                <h3 class="text-xl font-semibold text-primary-text-color mb-2">Javed Khan</h3>
+                <p class="text-secondary-text-color">Software Developer</p>
+            </div>
+
+            <!-- Team Member 2 -->
+            <div class="text-center animate-scale">
+                <img src="{% static 'images/profile/dhruv.webp' %}" alt="Team Member 2"
+                    class="w-48 h-48 mx-auto rounded-full mb-4 transition-transform duration-500 hover:scale-105">
+                <h3 class="text-xl font-semibold text-primary-text-color mb-2">Dhruv</h3>
+                <p class="text-secondary-text-color">Web Designer</p>
+            </div>
+
+            
+        </div>
+    </div>
+</section>
+
+{% endblock %}
